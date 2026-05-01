@@ -12,3 +12,19 @@ on:
     paths:
       - 'src/**'
       - '!src/docs/**'
+jobs:
+  job_gerador:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Criar arquivos de build
+        run: |
+          mkdir saida_build
+          echo "Relatório 1" > saida_build/relatorio1.txt
+          echo "Relatório 2" > saida_build/relatorio2.txt
+
+      - name: Upload dos artefatos
+        uses: actions/upload-artifact@v4
+        with:
+          name: meus-relatorios-oficiais
+          path: saida_build/
